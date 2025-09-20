@@ -18,7 +18,7 @@ do{
 
     switch (option) {
         case 1:
-            console.log("\n|| ==== REGISTER BOOK ==== ||\n");
+            console.log("\n|| ==== REGISTER BOOK ==== ||");
             let id = books.length + 1;
             let title = prompt("|| ? - Title: ");
             let author = prompt("|| ? - Author: ");
@@ -46,6 +46,7 @@ do{
                 case 3:
                     console.log("\n|| ==== LIST BOOKS BY GENRE ==== ||\n");
                     var genreSearch = prompt("|| ? - Genre: ");
+                    console.log("");
                     listBooksByGenre(books, genreSearch);
                     console.log("");
                     break;
@@ -73,7 +74,7 @@ do{
                     console.log("");
                     break;
             }
-            
+            break;
         case 4:
             console.log("\n|| ==== EDIT BOOK ==== ||");
             console.log("|| 1 - Edit Title      ||");
