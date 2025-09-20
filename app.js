@@ -1,9 +1,9 @@
 import promptSync from 'prompt-sync';
 const prompt = promptSync();
-import { menu } from './libraryMenu.js';
+import { menu, subMenuList, subMenuSearch } from './libraryMenu.js';
 import { registerBook } from './bookRegister.js';
-import { listBooks } from './listBooks.js';
-import { searchBookByTitle } from './searchBookByTitle.js';
+import { listBooks, listBooksAvaiable, listBooksByGenre } from './listBooks.js';
+import { searchBookByTitle, searchBookByAuthor } from './searchBook.js';
 import { editBook } from './editBook.js';
 import { changeBookStatus } from './changeBookStatus.js';
 import { deleteBook } from './deleteBook.js';
@@ -30,9 +30,26 @@ do{
             console.log("\n|| Book registered successfully! ||\n");
             break;
         case 2:
-            console.log("\n|| ==== LIST OF BOOKS ==== ||\n");
-            listBooks(books);
-            console.log("");
+            subMenuList();
+            let listOption = parseInt(prompt("|| ? - Your Choice: "));
+            switch(listOption){
+                case 1:
+                    console.log("\n|| ==== LIST ALL BOOKS ==== ||\n");
+                    listBooks(books);
+                    console.log("");
+                    break;
+                case 2:
+                    console.log("\n|| ==== LIST ALL AVAILABLE BOOKS ==== ||\n");
+                    listBooksAvaiable(books);
+                    console.log("");
+                    break;
+                case 3:
+                    console.log("\n|| ==== LIST BOOKS BY GENRE ==== ||\n");
+                    var genreSearch = prompt("|| ? - Genre: ");
+                    listBooksByGenre(books, genreSearch);
+                    console.log("");
+                    break;
+            }
             
             break;
         case 3:
