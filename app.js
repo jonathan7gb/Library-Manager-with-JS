@@ -53,14 +53,27 @@ do{
             
             break;
         case 3:
-            console.log("\n|| ==== SEARCH BOOK BY TITLE ==== ||\n");
-            var searchTitle = prompt("|| ? - Title: ");
-            console.log("");
+            subMenuSearch();
+            let searchOption = parseInt(prompt("|| ? - Your Choice: "));
+            switch(searchOption){
+                case 1:
+                    console.log("\n|| ==== SEARCH BOOK BY TITLE ==== ||\n");
+                    var searchTitle = prompt("|| ? - Title: ");
+                    console.log("");
+                    let foundBooks = searchBookByTitle(books, searchTitle)
+                    listBooks(foundBooks);
+                    console.log("");
+                    break;
+                case 2:
+                    console.log("\n|| ==== SEARCH BOOK BY AUTHOR ==== ||\n");
+                    var searchAuthor = prompt("|| ? - Author: ");
+                    console.log("");
+                    let foundBooksByAuthor = searchBookByAuthor(books, searchAuthor)
+                    listBooks(foundBooksByAuthor);
+                    console.log("");
+                    break;
+            }
             
-            let foundBooks = searchBookByTitle(books, searchTitle)
-            listBooks(foundBooks);
-            console.log("");
-            break;
         case 4:
             console.log("\n|| ==== EDIT BOOK ==== ||");
             console.log("|| 1 - Edit Title      ||");
