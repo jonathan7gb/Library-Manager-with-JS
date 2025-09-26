@@ -17,6 +17,25 @@ var option;
 var loginOption;
 var loggedInUser = null
 
+users.push({email: 'admin', password: '1234'})
+books.push(registerBook(
+    6,
+    "Neuromancer",
+    "William Gibson",
+    1984,
+    "Cyberpunk",
+    "Disponível"
+));
+
+books.push(registerBook(
+    7,
+    "Sapiens: Uma Breve História da Humanidade",
+    "Yuval Noah Harari",
+    2011,
+    "Não-Ficção",
+    "Emprestado"
+));
+
 do{
     loginOption = loginMenu();
 
