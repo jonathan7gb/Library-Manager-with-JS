@@ -1,6 +1,6 @@
 import promptSync from 'prompt-sync';
 const prompt = promptSync();
-import { menu, subMenuList, subMenuSearch } from './libraryMenu.js';
+import { menu, subMenuList, subMenuSearch } from './libraryMenus.js';
 import { registerBook } from './bookRegister.js';
 import { listBooks, listBooksAvaiable, listBooksByGenre } from './listBooks.js';
 import { searchBookByTitle, searchBookByAuthor } from './searchBook.js';
@@ -20,7 +20,16 @@ do{
         case 1:
             console.log("\n|| ==== REGISTER BOOK ==== ||");
             let id = books.length + 1;
-            let title = prompt("|| ? - Title: ");
+            let title;
+            do {
+                title = prompt("|| ? - Title: ");
+                const duplicate = books.some(book => book.title.toLowerCase() === title.toLowerCase());
+                if (duplicate) {
+                    console.log("|| A book with this title already exists in the catalog. ||");
+                } else {
+                    break;
+                }
+            } while (true)
             let author = prompt("|| ? - Author: ");
             let year = prompt("|| ? - Publication Year: ");
             let genre = prompt("|| ? - Genre: ");
@@ -36,6 +45,7 @@ do{
                 case 1:
                     console.log("\n|| ==== LIST ALL BOOKS ==== ||\n");
                     listBooks(books);
+                    
                     console.log("");
                     break;
                 case 2:
