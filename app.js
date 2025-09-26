@@ -168,7 +168,7 @@ do{
             var bookId = parseInt(prompt("|| ? - Book ID: "));
             var book = findBookByID(bookId, books)
             if(book == null){
-                console.log("|| Book not Found ||")
+                console.log("\n|| === Book not Found === ||\n")
             }else if(book.status === 'Borrowed'){
                 console.log("\n|| Book not Available to Loan! ||\n");
             }else{
