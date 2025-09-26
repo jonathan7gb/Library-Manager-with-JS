@@ -3,14 +3,16 @@ const prompt = promptSync();
 import { menu, subMenuList, subMenuSearch } from './libraryMenus.js';
 import { registerBook } from './bookRegister.js';
 import { listBooks, listBooksAvaiable, listBooksByGenre, listBooksYearAsc, listBooksYearDesc } from './listBooks.js';
-import { searchBookByTitle, searchBookByAuthor } from './searchBook.js';
+import { searchBookByTitle, searchBookByAuthor, findBookByID } from './searchBook.js';
 import { editBook } from './editBook.js';
 import { changeBookStatus } from './changeBookStatus.js';
 import { deleteBook } from './deleteBook.js';
 import { findUserByEmail, registerUser, doLogin, loginMenu } from './login.js';
+import { listLoans, makeLoan } from './loans.js';
 
 var users = []
 var books = [];
+var loans = [];
 var option;
 var loginOption;
 var loggedInUser = null
@@ -43,7 +45,7 @@ do{
             loggedInUser = 'EXIT';
             break;
         default:
-            console.log("\n|| Wrong option. Enter a valid option ||\n");
+            console.log("\n|| == Invalid option! == ||\n");
             break;
             
     }
@@ -108,6 +110,9 @@ do{
                     listBooksYearDesc(books)
                     console.log("");
                 break;
+                default:
+                    console.log("\n|| == Invalid option! == ||\n");
+                    break;
             }
             
             break;
@@ -130,6 +135,9 @@ do{
                     let foundBooksByAuthor = searchBookByAuthor(books, searchAuthor)
                     listBooks(foundBooksByAuthor);
                     console.log("");
+                    break;
+                default:
+                    console.log("\n|| == Invalid option! == ||\n");
                     break;
             }
             break;
@@ -154,8 +162,30 @@ do{
             var deleteId = parseInt(prompt("|| ? - Book ID: "));
             deleteBook(books, deleteId);
             break;
+        case 7:
+            console.log("\n|| ==== MAKE A LOAN ==== ||");
+            var idLoan = loans.length + 1;
+            var bookId = parseInt(prompt("|| ? - Book ID: "));
+            var book = findBookByID(bookId, books)
+            if(book == null){
+                console.log("|| Book not Found ||")
+            }else if(book.status === 'Borrowed'){
+                console.log("\n|| Book not Available to Loan! ||\n");
+            }else{
+                book.status = 'Borrowed'
+                var loan = makeLoan(idLoan, book)
+                loans.push(loan)
+                console.log("\n|| Loan registered successfully! ||\n");
+            }
+            break;
+        case 8:
+            console.log("\n|| ==== LOAN HISTORY ==== ||\n");
+            listLoans(loans)
+            console.log("");
+            break; 
         case 0:
             console.log("\n|| ==== EXITING THE SYSTEM ==== ||\n");
+            break;
         default:
             console.log("|| Wrong option. Enter a valid option ||");
             break;

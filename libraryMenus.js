@@ -6,6 +6,8 @@ export function menu(){
     console.log("|| 4 - Edit Book             ||")
     console.log("|| 5 - Change Book Status    ||")
     console.log("|| 6 - Delete Book           ||")
+    console.log("|| 7 - Make Loan             ||")
+    console.log("|| 8 - Loan History          ||")
     console.log("|| 0 - Exit                  ||")
 }
 

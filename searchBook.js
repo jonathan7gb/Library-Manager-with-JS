@@ -17,3 +17,7 @@ export function searchBookByAuthor(books, author) {
         return foundBooks;
     }
 }
+
+export function findBookByID(id, books) {
+    return books.find(book => book.id === id);
+}
