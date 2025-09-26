@@ -7,11 +7,49 @@ import { searchBookByTitle, searchBookByAuthor } from './searchBook.js';
 import { editBook } from './editBook.js';
 import { changeBookStatus } from './changeBookStatus.js';
 import { deleteBook } from './deleteBook.js';
+import { findUserByEmail, registerUser, doLogin, loginMenu } from './login.js';
 
-
+var users = []
 var books = [];
 var option;
+var loginOption;
+var loggedInUser = null
 
+do{
+    loginOption = loginMenu();
+
+    switch(loginOption){
+        case 1: 
+            const userLogin = doLogin()
+            const userVerify = findUserByEmail(userLogin.email, users);
+
+            if(userVerify && userLogin.password === userVerify.password){
+                loggedInUser = userVerify;
+                console.log("\n|| === Login successfully! === ||\n");
+            }else{
+                console.log("\n|| Wrong email or password. Try again ||\n");
+            }
+            break;
+        case 2: 
+            const newUser = registerUser(users)
+            
+            if(newUser){
+                users.push(newUser)
+                console.log("\n|| User registered successfully! ||\n");
+            }
+            break;
+        case 0:
+            console.log("\n|| ==== System end! ==== ||");
+            loggedInUser = 'EXIT';
+            break;
+        default:
+            console.log("\n|| Wrong option. Enter a valid option ||\n");
+            break;
+            
+    }
+}while(loggedInUser === null);
+
+if(loggedInUser && loggedInUser !== 'EXIT')
 do{
     menu();
     option = parseInt(prompt("|| ? - Your Choice: "));
@@ -118,6 +156,9 @@ do{
             break;
         case 0:
             console.log("\n|| ==== EXITING THE SYSTEM ==== ||\n");
+        default:
+            console.log("|| Wrong option. Enter a valid option ||");
+            break;
             
     }
 
