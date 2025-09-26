@@ -2,7 +2,7 @@ import promptSync from 'prompt-sync';
 const prompt = promptSync();
 import { menu, subMenuList, subMenuSearch } from './libraryMenus.js';
 import { registerBook } from './bookRegister.js';
-import { listBooks, listBooksAvaiable, listBooksByGenre } from './listBooks.js';
+import { listBooks, listBooksAvaiable, listBooksByGenre, listBooksYearAsc, listBooksYearDesc } from './listBooks.js';
 import { searchBookByTitle, searchBookByAuthor } from './searchBook.js';
 import { editBook } from './editBook.js';
 import { changeBookStatus } from './changeBookStatus.js';
@@ -60,6 +60,16 @@ do{
                     listBooksByGenre(books, genreSearch);
                     console.log("");
                     break;
+                case 4:
+                    console.log("\n|| ==== YEAR ASCENDING ORDER ==== ||\n");
+                    listBooksYearAsc(books)
+                    console.log("");
+                    break;
+                case 5:
+                    console.log("\n|| ==== YEAR DESCENDING ORDER ==== ||\n");
+                    listBooksYearDesc(books)
+                    console.log("");
+                break;
             }
             
             break;

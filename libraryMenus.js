@@ -16,8 +16,10 @@ export function subMenuSearch(){
 }
 
 export function subMenuList(){
-    console.log("\n|| ====== LIST BOOKS ====== ||")
-    console.log("|| 1 - List All Books       ||")
-    console.log("|| 2 - List All Available   ||")
-    console.log("|| 3 - List By Genre        ||")
+    console.log("\n|| ====== LIST BOOKS ======= ||")
+    console.log("|| 1 - List All Books        ||")
+    console.log("|| 2 - List All Available    ||")
+    console.log("|| 3 - List By Genre         ||")
+    console.log("|| 4 - Year Ascending Order  ||")
+    console.log("|| 5 - Year Descending Order ||")
 }
