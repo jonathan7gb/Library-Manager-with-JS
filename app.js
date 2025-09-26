@@ -187,7 +187,7 @@ do{
             console.log("\n|| ==== EXITING THE SYSTEM ==== ||\n");
             break;
         default:
-            console.log("|| Wrong option. Enter a valid option ||");
+            console.log("\n|| == Invalid option! == ||\n");
             break;
             
     }
