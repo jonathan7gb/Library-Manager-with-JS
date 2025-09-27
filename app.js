@@ -63,6 +63,8 @@ do{
             console.log("\n|| ==== REGISTER BOOK ==== ||");
             let id = books.length + 1;
             let title;
+            let year;
+            
             do {
                 title = prompt("|| ? - Title: ");
                 const duplicate = books.some(book => book.title.toLowerCase() === title.toLowerCase());
@@ -72,8 +74,19 @@ do{
                     break;
                 }
             } while (true)
+
             let author = prompt("|| ? - Author: ");
-            let year = prompt("|| ? - Publication Year: ");
+
+            do {
+                year = parseInt(prompt("|| ? - Publication Year: "));
+                
+                if (year > 2025) {
+                    console.log("|| The publication year cannot be greater than 2025. Please try again. ||");
+                } else {
+                    break;
+                }
+            } while (true)
+            
             let genre = prompt("|| ? - Genre: ");
             let status = "Available";
             const newBook = registerBook(id, title, author, year, genre, status);
@@ -191,7 +204,7 @@ do{
         default:
             console.log("\n|| == Invalid option! == ||\n");
             break;
-            
+         
     }
 
 }while(option != 0);
